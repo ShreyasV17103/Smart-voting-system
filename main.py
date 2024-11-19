@@ -19,7 +19,7 @@ cascade = cv2.CascadeClassifier(facedata)
 
 mydb=pymysql.connect(host='localhost', user='root', password='', port=3306, database='smart_voting_system')
 sender_address ="vitshreyas@gmail.com" #enter sender's email id
-sender_pass = 'ljbbtkzdxcqoagam' #enter sender's passwor
+sender_pass = 'ljbbtkzdxcqoagam' #enter sender's password
 
 
 app=Flask(__name__)
@@ -157,7 +157,7 @@ def capture_images():
             ret, img = cam.read()
             try:
                 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            except:
+            except: 
                 continue
             faces = cascade.detectMultiScale(gray, 1.3, 5)
             for (x, y, w, h) in faces:
@@ -246,7 +246,6 @@ def updateback():
             # session['email']=email
             flash(r'Database Updated Successfully','Primary')
             return redirect(url_for('home'))
-           
         else:
             flash("age should be 18 or greater than 18 is eligible", "info")
     return render_template('update.html')
